@@ -5,7 +5,7 @@
 Petit jeu de simulation de ferme
 Garanti sans OGM
 
-(c) Marc Augier 2016
+(c) Marc Augier 2021
 m.augier@me.com
 
 Règles du jeu:
