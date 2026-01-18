@@ -31,6 +31,17 @@ class Dog:
 
     def rest(self):
         self.__stamina += 5
+        if self.__stamina > 100:
+            self.__stamina = 100
+
+    def run(self, distance=10):
+        if self.__stamina > 30:
+            self.__stamina -= distance/2
+            if self.__stamina < 0:
+                self.__stamina = 0
+            return True
+        else:
+            return False
 
 print("\nCréation de Médor")
 medor = Dog("Medor", 2 , "Labrador")
@@ -58,3 +69,16 @@ zephir.grow_old(4)
 print("\tNouvel age: {} et stamina {}".format(zephir.getAge(), zephir.getStamina()))
 zephir.rest()
 print("\tNouvel age: {} et stamina {}".format(zephir.getAge(), zephir.getStamina()))
+
+zephir.run()
+print("-- Nouveau stamina {}".format(zephir.getStamina()))
+
+if (zephir.run(100)):
+    print("-- Nouveau stamina {}".format(zephir.getStamina()))
+else:
+    print("-- {} a refusé de courir".format(zephir.name))
+
+if (zephir.run(500)):
+    print("-- Nouveau stamina {}".format(zephir.getStamina()))
+else:
+    print("-- {} a refusé de courir".format(zephir.name))
