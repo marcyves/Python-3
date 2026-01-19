@@ -36,49 +36,42 @@ class Dog:
 
     def run(self, distance=10):
         if self.__stamina > 30:
-            self.__stamina -= distance/2
-            if self.__stamina < 0:
-                self.__stamina = 0
-            return True
+            distance_max = (self.__stamina - 5) * 2
+            if distance < distance_max:
+                self.__stamina -= distance/2
+                return True
+            else:
+                distance = distance_max
+                self.__stamina = 5
+                return distance
         else:
             return False
 
 print("\nCréation de Médor")
 medor = Dog("Medor", 2 , "Labrador")
-
-print(medor)
-
 print("Nous avons créé le chien {} de race {} et agé de {} ans.".format(medor.name, medor.getBreed(), medor.getAge()))
 
 print("\nCréation de Zéphir")
 zephir = Dog("Zéphir", 1, "Cocker")
-
 print("Nous avons créé le chien {} de race {} et agé de {} ans.".format(zephir.name, zephir.getBreed(), zephir.getAge()))
 
-zephir.name = "Riféz"
-# Comment interdire zephir.breed = "Epagneul" ?
-print("Nous avons créé le chien {} de race {} et agé de {} ans.".format(zephir.name, zephir.getBreed(), zephir.getAge()))
-
-zephir.grow_old()
-print("\tNouvel age: {} et stamina {}".format(zephir.getAge(), zephir.getStamina()))
-
-zephir.grow_old(-1)
-print("\tNouvel age: {} et stamina {}".format(zephir.getAge(), zephir.getStamina()))
-
-zephir.grow_old(4)
-print("\tNouvel age: {} et stamina {}".format(zephir.getAge(), zephir.getStamina()))
-zephir.rest()
-print("\tNouvel age: {} et stamina {}".format(zephir.getAge(), zephir.getStamina()))
-
-zephir.run()
-print("-- Nouveau stamina {}".format(zephir.getStamina()))
-
-if (zephir.run(100)):
-    print("-- Nouveau stamina {}".format(zephir.getStamina()))
+distance = zephir.run()
+if (distance):
+    if(distance == True):
+        print("-- Nouveau stamina {}.".format(zephir.getStamina()))
+    else:
+        print("-- Nouveau stamina {} après avoir courru {} mètres.".format(zephir.getStamina(), distance))
 else:
     print("-- {} a refusé de courir".format(zephir.name))
 
-if (zephir.run(500)):
+distance = zephir.run(500)
+if (distance):
+    print("-- Nouveau stamina {} après avoir courru {} mètres.".format(zephir.getStamina(), distance))
+else:
+    print("-- {} a refusé de courir".format(zephir.name))
+
+distance = zephir.run(500)
+if (distance):
     print("-- Nouveau stamina {}".format(zephir.getStamina()))
 else:
     print("-- {} a refusé de courir".format(zephir.name))
